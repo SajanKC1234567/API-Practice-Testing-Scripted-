@@ -1,0 +1,1800 @@
+{
+	"info": {
+		"_postman_id": "ae1d6fc5-937a-4039-a1d5-ea84fb314c41",
+		"name": "Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20551642"
+	},
+	"item": [
+		{
+			"name": "Check Health",
+			"item": [
+				{
+					"name": "Check Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/health-check",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"health-check"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Check Health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/health-check",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"health-check"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, DELETE, PATCH"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-encoding",
+									"value": "br"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"3e-FE3Nfnlblw5s6WOK197+HBp7tw8\""
+								},
+								{
+									"key": "set-cookie",
+									"value": "express:sess=eyJmbGFzaCI6e319; path=/; httponly"
+								},
+								{
+									"key": "set-cookie",
+									"value": "express:sess.sig=tdt42nQZiQvICqmrvHQ1_16fHk0; path=/; httponly"
+								},
+								{
+									"key": "date",
+									"value": "Fri, 28 Jun 2024 15:02:01 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Notes API is Running\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User Section",
+			"item": [
+				{
+					"name": "Session Controller",
+					"item": [
+						{
+							"name": "registration",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var body = JSON.parse(pm.request.body.raw);\r",
+											"pm.collectionVariables.set(\"password\", body.password)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var apiresp = pm.response.json();\r",
+											"var response_data = apiresp.data;\r",
+											"pm.collectionVariables.set(\"name\", response_data.name)\r",
+											"pm.collectionVariables.set(\"id\", response_data.id)\r",
+											"pm.collectionVariables.set(\"email\", response_data.email)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Sajan\",\r\n    \"email\": \"test123675@gmail.com\",\r\n    \"password\": \"Test@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "registration",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\" : \"Sajan\",\r\n    \"email\": \"test123675@gmail.com\",\r\n    \"password\": \"Test@123\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/users/register",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"users",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "access-control-allow-origin",
+											"value": "*"
+										},
+										{
+											"key": "access-control-allow-credentials",
+											"value": "true"
+										},
+										{
+											"key": "access-control-allow-methods",
+											"value": "GET, POST, PUT, DELETE, PATCH"
+										},
+										{
+											"key": "access-control-allow-headers",
+											"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "content-encoding",
+											"value": "br"
+										},
+										{
+											"key": "etag",
+											"value": "W/\"a2-xiEnWl/dvKdn7SqVUMnwlcsCA/Q\""
+										},
+										{
+											"key": "date",
+											"value": "Fri, 28 Jun 2024 15:13:38 GMT"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"status\": 201,\n    \"message\": \"User account created successfully\",\n    \"data\": {\n        \"id\": \"667ed322ad137f014a8b4eab\",\n        \"name\": \"Sajan\",\n        \"email\": \"test123675@gmail.com\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var res = pm.response.json();\r",
+											"pm.collectionVariables.set(\"token\", res.data.token)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"test123675@gmail.com\",\r\n    \"password\": \"Test@123\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/users/login",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"users",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "access-control-allow-origin",
+											"value": "*"
+										},
+										{
+											"key": "access-control-allow-credentials",
+											"value": "true"
+										},
+										{
+											"key": "access-control-allow-methods",
+											"value": "GET, POST, PUT, DELETE, PATCH"
+										},
+										{
+											"key": "access-control-allow-headers",
+											"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "content-encoding",
+											"value": "br"
+										},
+										{
+											"key": "etag",
+											"value": "W/\"dc-TXh12lFArq6nwJPw4jAuJP4Gves\""
+										},
+										{
+											"key": "date",
+											"value": "Fri, 28 Jun 2024 15:28:25 GMT"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"id\": \"667ed322ad137f014a8b4eab\",\n        \"name\": \"Sajan\",\n        \"email\": \"test123675@gmail.com\",\n        \"token\": \"d10a321ded674beaae6b0b1592b70f817f8be86c3d38474f8db19e58f8b8094a\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "logged in",
+					"item": [
+						{
+							"name": "Profile",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users/profile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"profile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Profile",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/users/profile",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"users",
+												"profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "access-control-allow-origin",
+											"value": "*"
+										},
+										{
+											"key": "access-control-allow-credentials",
+											"value": "true"
+										},
+										{
+											"key": "access-control-allow-methods",
+											"value": "GET, POST, PUT, DELETE, PATCH"
+										},
+										{
+											"key": "access-control-allow-headers",
+											"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "content-encoding",
+											"value": "br"
+										},
+										{
+											"key": "etag",
+											"value": "W/\"93-10nbjv6DC4AgqcbMujNhb1q6IMU\""
+										},
+										{
+											"key": "date",
+											"value": "Fri, 28 Jun 2024 15:39:35 GMT"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Profile successful\",\n    \"data\": {\n        \"id\": \"667ed322ad137f014a8b4eab\",\n        \"name\": \"Sajan\",\n        \"email\": \"test123675@gmail.com\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Profile",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"phone\": \"9841000000\",\r\n    \"company\": \"grepsr pvt. ltd.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/profile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"profile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update Profile",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"phone\": \"9841000000\",\r\n    \"company\": \"grepsr pvt. ltd.\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/users/profile",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"users",
+												"profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "access-control-allow-origin",
+											"value": "*"
+										},
+										{
+											"key": "access-control-allow-credentials",
+											"value": "true"
+										},
+										{
+											"key": "access-control-allow-methods",
+											"value": "GET, POST, PUT, DELETE, PATCH"
+										},
+										{
+											"key": "access-control-allow-headers",
+											"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "content-encoding",
+											"value": "br"
+										},
+										{
+											"key": "etag",
+											"value": "W/\"cd-N8hhxTWauIwlZBFtSqixtPxf2qU\""
+										},
+										{
+											"key": "date",
+											"value": "Fri, 28 Jun 2024 15:43:56 GMT"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Profile updated successful\",\n    \"data\": {\n        \"id\": \"667ed322ad137f014a8b4eab\",\n        \"name\": \"Sajan\",\n        \"email\": \"test123675@gmail.com\",\n        \"phone\": \"9841000000\",\n        \"company\": \"grepsr pvt. ltd.\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Reset Password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"{{email}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/forgot-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"forgot-password"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Reset Password",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\" : \"{{email}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/users/forgot-password",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"users",
+												"forgot-password"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "access-control-allow-origin",
+											"value": "*"
+										},
+										{
+											"key": "access-control-allow-credentials",
+											"value": "true"
+										},
+										{
+											"key": "access-control-allow-methods",
+											"value": "GET, POST, PUT, DELETE, PATCH"
+										},
+										{
+											"key": "access-control-allow-headers",
+											"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "content-encoding",
+											"value": "br"
+										},
+										{
+											"key": "etag",
+											"value": "W/\"94-5LRAR6WHoikKVmea7/8m9BDd4JA\""
+										},
+										{
+											"key": "date",
+											"value": "Fri, 28 Jun 2024 15:47:20 GMT"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Password reset link successfully sent to test123675@gmail.com. Please verify by clicking on the given link\"\n}"
+								}
+							]
+						},
+						{
+							"name": "OTP verification",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\": \"134568\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/verify-reset-password-token",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"verify-reset-password-token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\": \"134568\",\r\n    \"newpassword\": \"Test@1234567\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/reset-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"reset-password"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Reset Password",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"token\": \"134568\",\r\n    \"newpassword\": \"Test@1234567\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/users/reset-password",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"users",
+												"reset-password"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "access-control-allow-origin",
+											"value": "*"
+										},
+										{
+											"key": "access-control-allow-credentials",
+											"value": "true"
+										},
+										{
+											"key": "access-control-allow-methods",
+											"value": "GET, POST, PUT, DELETE, PATCH"
+										},
+										{
+											"key": "access-control-allow-headers",
+											"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "content-encoding",
+											"value": "br"
+										},
+										{
+											"key": "etag",
+											"value": "W/\"5b-gpcTDlDwOoOqn4a9Kh9XAjgtqkQ\""
+										},
+										{
+											"key": "date",
+											"value": "Fri, 28 Jun 2024 16:03:02 GMT"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"status\": 400,\n    \"message\": \"New password must be between 6 and 30 characters\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Change Password",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var reqBody = JSON.parse(pm.request.body.raw);\r",
+											"pm.collectionVariables.set(\"password\", reqBody.newPassword)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"currentPassword\": \"{{password}}\",\r\n    \"newPassword\": \"Test@1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/change-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"change-password"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Change Password",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"currentPassword\": \"{{password}}\",\r\n    \"newPassword\": \"Test@1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/users/change-password",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"users",
+												"change-password"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "access-control-allow-origin",
+											"value": "*"
+										},
+										{
+											"key": "access-control-allow-credentials",
+											"value": "true"
+										},
+										{
+											"key": "access-control-allow-methods",
+											"value": "GET, POST, PUT, DELETE, PATCH"
+										},
+										{
+											"key": "access-control-allow-headers",
+											"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "content-encoding",
+											"value": "br"
+										},
+										{
+											"key": "etag",
+											"value": "W/\"4f-ava50LOZV9GrNX1jv2XMGsJdMdg\""
+										},
+										{
+											"key": "date",
+											"value": "Fri, 28 Jun 2024 16:08:22 GMT"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"The password was successfully updated\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Log Out",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"logout"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "LogOut",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/users/logout",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"users",
+												"logout"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "access-control-allow-origin",
+											"value": "*"
+										},
+										{
+											"key": "access-control-allow-credentials",
+											"value": "true"
+										},
+										{
+											"key": "access-control-allow-methods",
+											"value": "GET, POST, PUT, DELETE, PATCH"
+										},
+										{
+											"key": "access-control-allow-headers",
+											"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "content-encoding",
+											"value": "br"
+										},
+										{
+											"key": "etag",
+											"value": "W/\"4f-7fu1YLvqWAlBLt3rT+vlZvUfugw\""
+										},
+										{
+											"key": "date",
+											"value": "Fri, 28 Jun 2024 16:10:38 GMT"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"User has been successfully logged out\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users/delete-account",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"delete-account"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete User",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/users/delete-account",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"users",
+												"delete-account"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "access-control-allow-origin",
+											"value": "*"
+										},
+										{
+											"key": "access-control-allow-credentials",
+											"value": "true"
+										},
+										{
+											"key": "access-control-allow-methods",
+											"value": "GET, POST, PUT, DELETE, PATCH"
+										},
+										{
+											"key": "access-control-allow-headers",
+											"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+										},
+										{
+											"key": "content-type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "content-encoding",
+											"value": "br"
+										},
+										{
+											"key": "etag",
+											"value": "W/\"46-xvIiFl/4e/p/xA8LA+FZxbRy7yU\""
+										},
+										{
+											"key": "date",
+											"value": "Fri, 28 Jun 2024 16:12:09 GMT"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Account successfully deleted\"\n}"
+								}
+							]
+						}
+					],
+					"auth": {
+						"type": "apikey",
+						"apikey": [
+							{
+								"key": "value",
+								"value": "{{token}}",
+								"type": "string"
+							},
+							{
+								"key": "key",
+								"value": "x-auth-token",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create Notes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res = pm.response.json();\r",
+									"pm.collectionVariables.set(\"note_id\", res.data.id)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"test plan\",\r\n    \"description\": \"testplan for test assessment\",\r\n    \"category\": \"Work\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/notes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Notes",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"test plan\",\r\n    \"description\": \"testplan for test assessment\",\r\n    \"category\": \"Work\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/notes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"notes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, DELETE, PATCH"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-encoding",
+									"value": "br"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"146-MHg/8vVyb4Qq088H9ZA4YOPifFc\""
+								},
+								{
+									"key": "date",
+									"value": "Sat, 29 Jun 2024 05:38:53 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Note successfully created\",\n    \"data\": {\n        \"id\": \"667f9dedad137f014a8b502a\",\n        \"title\": \"test plan\",\n        \"description\": \"testplan for test assessment\",\n        \"category\": \"Work\",\n        \"completed\": false,\n        \"created_at\": \"2024-06-29T05:38:53.745Z\",\n        \"updated_at\": \"2024-06-29T05:38:53.745Z\",\n        \"user_id\": \"667f9c7bad137f014a8b5000\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Notes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/notes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Notes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/notes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"notes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, DELETE, PATCH"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-encoding",
+									"value": "br"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"14b-887Lid9EXlfncz71WPESPn3lveE\""
+								},
+								{
+									"key": "date",
+									"value": "Sat, 29 Jun 2024 05:40:07 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Notes successfully retrieved\",\n    \"data\": [\n        {\n            \"id\": \"667f9dedad137f014a8b502a\",\n            \"title\": \"test plan\",\n            \"description\": \"testplan for test assessment\",\n            \"category\": \"Work\",\n            \"completed\": false,\n            \"created_at\": \"2024-06-29T05:38:53.745Z\",\n            \"updated_at\": \"2024-06-29T05:38:53.745Z\",\n            \"user_id\": \"667f9c7bad137f014a8b5000\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Notes By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":  \"{{note_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/notes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Notes By Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":  \"{{id}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/notes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"notes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, DELETE, PATCH"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-encoding",
+									"value": "br"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"14b-887Lid9EXlfncz71WPESPn3lveE\""
+								},
+								{
+									"key": "date",
+									"value": "Sat, 29 Jun 2024 05:41:31 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Notes successfully retrieved\",\n    \"data\": [\n        {\n            \"id\": \"667f9dedad137f014a8b502a\",\n            \"title\": \"test plan\",\n            \"description\": \"testplan for test assessment\",\n            \"category\": \"Work\",\n            \"completed\": false,\n            \"created_at\": \"2024-06-29T05:38:53.745Z\",\n            \"updated_at\": \"2024-06-29T05:38:53.745Z\",\n            \"user_id\": \"667f9c7bad137f014a8b5000\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Notes",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{note_id}}\",\r\n    \"completed\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/notes/{{note_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes",
+								"{{note_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Notes",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{note_id}}\",\r\n    \"completed\": \"true\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/notes/{{note_id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"notes",
+										"{{note_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, DELETE, PATCH"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-encoding",
+									"value": "br"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"145-jSeQJSmS9+lKNzYgaNJEt4sPcc4\""
+								},
+								{
+									"key": "date",
+									"value": "Sat, 29 Jun 2024 05:51:03 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Note successfully Updated\",\n    \"data\": {\n        \"id\": \"667fa09aad137f014a8b505f\",\n        \"title\": \"test plan\",\n        \"description\": \"testplan for test assessment\",\n        \"category\": \"Work\",\n        \"completed\": true,\n        \"created_at\": \"2024-06-29T05:50:18.613Z\",\n        \"updated_at\": \"2024-06-29T05:51:03.822Z\",\n        \"user_id\": \"667f9c7bad137f014a8b5000\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Notes",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{note_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/notes/{{note_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes",
+								"{{note_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Note",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{note_id}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/notes/{{note_id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"notes",
+										"{{note_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, PUT, DELETE, PATCH"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-encoding",
+									"value": "br"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"43-NRjYUraIosLt+x2lOOhDKG8vqCU\""
+								},
+								{
+									"key": "date",
+									"value": "Sat, 29 Jun 2024 05:52:54 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status\": 200,\n    \"message\": \"Note successfully deleted\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "value",
+						"value": "{{token}}",
+						"type": "string"
+					},
+					{
+						"key": "key",
+						"value": "x-auth-token",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://practice.expandtesting.com/notes/api",
+			"type": "string"
+		},
+		{
+			"key": "name",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "note_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
